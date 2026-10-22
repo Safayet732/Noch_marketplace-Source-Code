@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.noch.noch.controllers.OrderDetailController"
+      spacing="0"
+      style="-fx-background-color: #f8fafc;">
+
+    <!-- BACK + HEADER -->
+    <VBox spacing="8">
+        <padding><Insets bottom="16"/></padding>
+        <Button text="← Back to Dashboard" onAction="#goBack"
+                style="-fx-background-color: transparent; -fx-text-fill: #475569;
+                       -fx-font-size: 13; -fx-cursor: hand; -fx-font-family: Arial;"/>
+        <HBox alignment="CENTER_LEFT">
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Order Details"
+                       style="-fx-font-size: 28; -fx-font-weight: bold;
+                              -fx-text-fill: #0f172a; -fx-font-family: Arial;"/>
+                <Label fx:id="orderIdLabel" text="Order ID: —"
+                       style="-fx-font-size: 13; -fx-text-fill: #64748b; -fx-font-family: Arial;"/>
+            </VBox>
+            <Label fx:id="statusBadge" text=""
+                   style="-fx-background-radius: 12; -fx-padding: 4 14;
+                          -fx-font-size: 13; -fx-font-weight: bold;"/>
+        </HBox>
+    </VBox>
+
+    <ScrollPane fitToWidth="true"
+                style="-fx-background-color: transparent; -fx-background: transparent;"
+                VBox.vgrow="ALWAYS">
+        <VBox spacing="16">
+
+            <!-- 3 INFO CARDS -->
+            <HBox spacing="16">
+                <VBox style="-fx-background-color: white; -fx-background-radius: 12;
+                             -fx-border-color: #e2e8f0; -fx-border-width: 1;
+                             -fx-border-radius: 12; -fx-padding: 16;" HBox.hgrow="ALWAYS">
+                    <Label text="👤  Customer"
+                           style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #64748b; -fx-font-family: Arial;"/>
+                    <Label fx:id="customerNameLabel" text="—"
+                           style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #0f172a; -fx-font-family: Arial; -fx-padding: 8 0 2 0;"/>
+                    <Label fx:id="customerEmailLabel" text="—"
+                           style="-fx-font-size: 12; -fx-text-fill: #64748b; -fx-font-family: Arial;"/>
+                </VBox>
+                <VBox style="-fx-background-color: white; -fx-background-radius: 12;
+                             -fx-border-color: #e2e8f0; -fx-border-width: 1;
+                             -fx-border-radius: 12; -fx-padding: 16;" HBox.hgrow="ALWAYS">
+                    <Label text="📅  Order Date"
+                           style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #64748b; -fx-font-family: Arial;"/>
+                    <Label fx:id="orderDateLabel" text="—"
+                           style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #0f172a; -fx-font-family: Arial; -fx-padding: 8 0 0 0;"/>
+                </VBox>
+                <VBox style="-fx-background-color: white; -fx-background-radius: 12;
+                             -fx-border-color: #e2e8f0; -fx-border-width: 1;
+                             -fx-border-radius: 12; -fx-padding: 16;" HBox.hgrow="ALWAYS">
+                    <Label text="📦  Total Amount"
+                           style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #64748b; -fx-font-family: Arial;"/>
+                    <Label fx:id="totalLabel" text="£0.00"
+                           style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #002A53; -fx-font-family: Arial; -fx-padding: 8 0 0 0;"/>
+                </VBox>
+            </HBox>
+
+            <!-- ORDER ITEMS TABLE -->
+            <VBox style="-fx-background-color: white; -fx-background-radius: 12;
+                         -fx-border-color: #e2e8f0; -fx-border-width: 1; -fx-border-radius: 12;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0, 0, 2);">
+                <VBox spacing="4" style="-fx-padding: 20 24 12 24; -fx-border-color: #f1f5f9; -fx-border-width: 0 0 1 0;">
+                    <Label text="Order Items"
+                           style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #0f172a; -fx-font-family: Arial;"/>
+                </VBox>
+                <TableView fx:id="itemsTable"
+                           style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-min-height: 150;">
+                    <columns>
+                        <TableColumn fx:id="colProduct"   text="Product"    prefWidth="260"/>
+                        <TableColumn fx:id="colUnitPrice" text="Unit Price" prefWidth="120"/>
+                        <TableColumn fx:id="colQty"       text="Quantity"   prefWidth="100"/>
+                        <TableColumn fx:id="colSubtotal"  text="Subtotal"   prefWidth="120"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <!-- STATUS + ADMIN CONTROLS -->
+            <HBox spacing="16">
+                <!-- Lifecycle -->
+                <VBox style="-fx-background-color: white; -fx-background-radius: 12;
+                             -fx-border-color: #e2e8f0; -fx-border-width: 1;
+                             -fx-border-radius: 12; -fx-padding: 20 24;" HBox.hgrow="ALWAYS">
+                    <Label text="Order Status"
+                           style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #0f172a; -fx-font-family: Arial;"/>
+                    <HBox fx:id="statusLifecycle" spacing="0" alignment="CENTER"
+                          style="-fx-padding: 20 0 8 0;"/>
+                </VBox>
+                <!-- Admin Controls -->
+                <VBox spacing="12"
+                      style="-fx-background-color: white; -fx-background-radius: 12;
+                             -fx-border-color: #e2e8f0; -fx-border-width: 1;
+                             -fx-border-radius: 12; -fx-padding: 20 24;" prefWidth="280">
+                    <Label text="Admin Controls"
+                           style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #0f172a; -fx-font-family: Arial;"/>
+                    <Label text="Update order status"
+                           style="-fx-font-size: 12; -fx-text-fill: #64748b; -fx-font-family: Arial;"/>
+                    <ComboBox fx:id="statusCombo" maxWidth="Infinity"
+                              onAction="#handleStatusUpdate"
+                              style="-fx-background-radius: 8; -fx-border-color: #d1d5db;
+                                     -fx-border-radius: 8; -fx-font-size: 13; -fx-font-family: Arial;"/>
+                    <Label fx:id="cancelledNote" text="" wrapText="true"
+                           style="-fx-font-size: 12; -fx-text-fill: #64748b;
+                                  -fx-background-color: #f8fafc; -fx-background-radius: 8;
+                                  -fx-padding: 10; -fx-font-family: Arial;"/>
+                </VBox>
+            </HBox>
+
+            <!-- RETURN SECTION -->
+            <VBox fx:id="returnSection" visible="false" managed="false"
+                  style="-fx-background-color: white; -fx-background-radius: 12;
+                         -fx-border-color: #e2e8f0; -fx-border-width: 1;
+                         -fx-border-radius: 12; -fx-padding: 20 24;" spacing="12">
+                <Label text="Initiate Return Request"
+                       style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #0f172a; -fx-font-family: Arial;"/>
+                <Label text="Return Reason *"
+                       style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #374151; -fx-font-family: Arial;"/>
+                <TextArea fx:id="returnReasonArea"
+                          promptText="Please describe the reason for return..."
+                          prefRowCount="4"
+                          style="-fx-background-radius: 8; -fx-border-color: #d1d5db;
+                                 -fx-border-radius: 8; -fx-border-width: 1;
+                                 -fx-font-size: 13; -fx-font-family: Arial;"/>
+                <Button text="Submit Return Request" onAction="#handleReturnRequest"
+                        style="-fx-background-color: #dc2626; -fx-text-fill: white;
+                               -fx-background-radius: 8; -fx-padding: 10 20;
+                               -fx-cursor: hand; -fx-font-weight: bold; -fx-font-family: Arial;"/>
+            </VBox>
+
+            <!-- RETURN INFO (if already returned) -->
+            <VBox fx:id="returnInfoSection" visible="false" managed="false"
+                  style="-fx-background-color: #fee2e2; -fx-background-radius: 12;
+                         -fx-border-color: #fca5a5; -fx-border-width: 1;
+                         -fx-border-radius: 12; -fx-padding: 20 24;" spacing="8">
+                <Label text="Return Information"
+                       style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #991b1b; -fx-font-family: Arial;"/>
+                <Label fx:id="returnDateLabel" text=""
+                       style="-fx-font-size: 13; -fx-text-fill: #dc2626; -fx-font-family: Arial;"/>
+                <Label fx:id="returnReasonLabel" text=""
+                       style="-fx-font-size: 13; -fx-text-fill: #dc2626; -fx-font-family: Arial;"/>
+            </VBox>
+
+            <VBox><padding><Insets bottom="24"/></padding></VBox>
+        </VBox>
+    </ScrollPane>
+</VBox>

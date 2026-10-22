@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.noch.noch.controllers.OrderConfirmationController"
+      alignment="CENTER"
+      spacing="0"
+      style="-fx-background-color: #f5f5f5;">
+
+    <ScrollPane fitToWidth="true"
+                style="-fx-background-color: transparent; -fx-background: transparent;"
+                VBox.vgrow="ALWAYS">
+        <VBox maxWidth="640" alignment="CENTER" spacing="20"
+              style="-fx-padding: 60 0;">
+
+            <!-- NOCH LOGO -->
+            <VBox alignment="CENTER" spacing="4">
+                <Label text="NOCH"
+                       style="-fx-font-size: 36; -fx-font-weight: bold;
+                              -fx-text-fill: #000000; -fx-font-family: Georgia;"/>
+                <Label text="MINIMALIST ESSENTIALS"
+                       style="-fx-font-size: 10; -fx-text-fill: #888888;
+                              -fx-font-family: Arial; -fx-letter-spacing: 3;"/>
+            </VBox>
+
+            <Separator style="-fx-background-color: #e0e0e0;" maxWidth="200"/>
+
+            <!-- SUCCESS MESSAGE -->
+            <VBox alignment="CENTER" spacing="8">
+                <Label text="ORDER CONFIRMED"
+                       style="-fx-font-size: 22; -fx-font-weight: bold;
+                              -fx-text-fill: #000000; -fx-font-family: Georgia;
+                              -fx-letter-spacing: 2;"/>
+                <Label text="Thank you. Your order has been received."
+                       style="-fx-font-size: 13; -fx-text-fill: #888888;
+                              -fx-font-family: Arial;"/>
+            </VBox>
+
+            <!-- ORDER DETAILS CARD -->
+            <VBox style="-fx-background-color: white;
+                         -fx-border-color: #e0e0e0; -fx-border-width: 1;"
+                  maxWidth="640">
+                <HBox alignment="CENTER_LEFT"
+                      style="-fx-padding: 20 24;
+                             -fx-border-color: #e0e0e0;
+                             -fx-border-width: 0 0 1 0;">
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="ORDER DETAILS"
+                               style="-fx-font-size: 12; -fx-font-weight: bold;
+                                      -fx-text-fill: #000000; -fx-font-family: Arial;
+                                      -fx-letter-spacing: 2;"/>
+                        <Label fx:id="orderIdLabel" text="—"
+                               style="-fx-font-size: 12; -fx-text-fill: #888888;
+                                      -fx-font-family: Arial;"/>
+                    </VBox>
+                    <Label fx:id="statusBadge" text="PROCESSING"
+                           style="-fx-border-color: #f59e0b; -fx-border-width: 1;
+                                  -fx-text-fill: #92400e; -fx-padding: 4 12;
+                                  -fx-font-size: 10; -fx-font-weight: bold;
+                                  -fx-font-family: Arial; -fx-letter-spacing: 1;"/>
+                </HBox>
+
+                <HBox spacing="32" style="-fx-padding: 20 24;">
+                    <VBox spacing="4">
+                        <Label text="ORDER DATE"
+                               style="-fx-font-size: 10; -fx-font-weight: bold;
+                                      -fx-text-fill: #888888; -fx-font-family: Arial;
+                                      -fx-letter-spacing: 1;"/>
+                        <Label fx:id="orderDateLabel" text="—"
+                               style="-fx-font-size: 13; -fx-font-weight: bold;
+                                      -fx-text-fill: #000000; -fx-font-family: Arial;"/>
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="ORDER TOTAL"
+                               style="-fx-font-size: 10; -fx-font-weight: bold;
+                                      -fx-text-fill: #888888; -fx-font-family: Arial;
+                                      -fx-letter-spacing: 1;"/>
+                        <Label fx:id="totalLabel" text="£0.00"
+                               style="-fx-font-size: 20; -fx-font-weight: bold;
+                                      -fx-text-fill: #000000; -fx-font-family: Georgia;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- ITEMS CARD -->
+            <VBox style="-fx-background-color: white;
+                         -fx-border-color: #e0e0e0; -fx-border-width: 1;"
+                  maxWidth="640">
+                <VBox spacing="4" style="-fx-padding: 20 24 16 24;
+                                          -fx-border-color: #e0e0e0;
+                                          -fx-border-width: 0 0 1 0;">
+                    <Label text="ITEMS ORDERED"
+                           style="-fx-font-size: 12; -fx-font-weight: bold;
+                                  -fx-text-fill: #000000; -fx-font-family: Arial;
+                                  -fx-letter-spacing: 2;"/>
+                </VBox>
+                <VBox fx:id="itemsList" spacing="0"
+                      style="-fx-padding: 8 24 16 24;"/>
+            </VBox>
+
+            <!-- BUTTONS -->
+            <HBox spacing="12" alignment="CENTER">
+                <padding><Insets top="8" bottom="40"/></padding>
+                <Button text="CONTINUE SHOPPING" onAction="#browsMore"
+                        style="-fx-background-color: white; -fx-text-fill: #000000;
+                               -fx-border-color: #cccccc; -fx-border-width: 1;
+                               -fx-border-radius: 0; -fx-background-radius: 0;
+                               -fx-padding: 12 24; -fx-cursor: hand;
+                               -fx-font-size: 11; -fx-font-family: Arial;
+                               -fx-letter-spacing: 1;"/>
+                <Button text="VIEW MY ORDERS" onAction="#viewHistory"
+                        style="-fx-background-color: #000000; -fx-text-fill: white;
+                               -fx-background-radius: 0;
+                               -fx-padding: 12 24; -fx-cursor: hand;
+                               -fx-font-size: 11; -fx-font-weight: bold;
+                               -fx-font-family: Arial; -fx-letter-spacing: 2;"/>
+            </HBox>
+        </VBox>
+    </ScrollPane>
+</VBox>

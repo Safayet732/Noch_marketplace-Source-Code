@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.noch.noch.controllers.ProductCatalogueController"
+      spacing="0"
+      style="-fx-background-color: #f5f5f5;">
+
+    <!-- PAGE HEADER -->
+    <VBox alignment="CENTER" spacing="6"
+          style="-fx-padding: 32 48 24 48;
+                 -fx-background-color: white;
+                 -fx-border-color: #e0e0e0;
+                 -fx-border-width: 0 0 1 0;">
+        <Label text="NEW COLLECTION"
+               style="-fx-font-size: 32; -fx-font-weight: bold;
+                      -fx-text-fill: #000000; -fx-font-family: Georgia;
+                      -fx-letter-spacing: 4;"/>
+        <Label text="Minimalist pieces for everyday life"
+               style="-fx-font-size: 13; -fx-text-fill: #888888;
+                      -fx-font-family: Arial;"/>
+    </VBox>
+
+    <!-- SEARCH + ACTIONS BAR -->
+    <HBox alignment="CENTER_LEFT" spacing="16"
+          style="-fx-padding: 16 48;
+                 -fx-background-color: white;
+                 -fx-border-color: #e0e0e0;
+                 -fx-border-width: 0 0 1 0;">
+        <TextField fx:id="searchField"
+                   promptText="Search pieces..."
+                   prefWidth="280"
+                   onKeyReleased="#applySearch"
+                   style="-fx-background-color: #f5f5f5;
+                          -fx-border-color: #e0e0e0;
+                          -fx-border-width: 1;
+                          -fx-border-radius: 0;
+                          -fx-background-radius: 0;
+                          -fx-padding: 8 12; -fx-font-size: 12;
+                          -fx-font-family: Arial;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="viewOrderBtn"
+                text="VIEW BAG (0 ITEMS)"
+                onAction="#proceedToOrderBuilder"
+                style="-fx-background-color: #000000;
+                       -fx-text-fill: white;
+                       -fx-font-size: 11; -fx-font-weight: bold;
+                       -fx-font-family: Arial; -fx-letter-spacing: 2;
+                       -fx-background-radius: 0;
+                       -fx-padding: 10 20; -fx-cursor: hand;"/>
+    </HBox>
+
+    <!-- PRODUCT GRID -->
+    <ScrollPane fitToWidth="true"
+                style="-fx-background-color: #f5f5f5;
+                       -fx-background: #f5f5f5;"
+                VBox.vgrow="ALWAYS">
+        <VBox style="-fx-padding: 32 48; -fx-background-color: #f5f5f5;">
+            <FlowPane fx:id="productGrid"
+                      hgap="24" vgap="24"
+                      alignment="CENTER"
+                      style="-fx-background-color: transparent;"/>
+            <Label fx:id="emptyLabel"
+                   text="No pieces found matching your search"
+                   visible="false" managed="false"
+                   style="-fx-font-size: 13; -fx-text-fill: #888888;
+                          -fx-padding: 48 0; -fx-font-family: Arial;"/>
+        </VBox>
+    </ScrollPane>
+</VBox>

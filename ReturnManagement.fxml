@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.noch.noch.controllers.ReturnManagementController"
+      spacing="0"
+      style="-fx-background-color: #f8fafc;">
+
+    <!-- PAGE HEADER -->
+    <VBox spacing="4">
+        <padding><Insets bottom="24"/></padding>
+        <Label text="Return Management"
+               style="-fx-font-size: 30; -fx-font-weight: bold;
+                      -fx-text-fill: #0f172a; -fx-font-family: Arial;"/>
+        <Label text="Review and process customer return requests"
+               style="-fx-font-size: 14; -fx-text-fill: #64748b; -fx-font-family: Arial;"/>
+    </VBox>
+
+    <!-- CARD -->
+    <VBox style="-fx-background-color: white;
+                 -fx-background-radius: 12;
+                 -fx-border-color: #e2e8f0; -fx-border-width: 1;
+                 -fx-border-radius: 12;
+                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0, 0, 2);"
+          VBox.vgrow="ALWAYS">
+
+        <VBox spacing="4" style="-fx-padding: 20 24;
+                                  -fx-border-color: #f1f5f9;
+                                  -fx-border-width: 0 0 1 0;">
+            <Label text="Return Requests"
+                   style="-fx-font-size: 17; -fx-font-weight: bold;
+                          -fx-text-fill: #0f172a; -fx-font-family: Arial;"/>
+            <Label fx:id="countLabel" text="0 return requests"
+                   style="-fx-font-size: 13; -fx-text-fill: #64748b;
+                          -fx-font-family: Arial;"/>
+        </VBox>
+
+        <TableView fx:id="returnsTable" VBox.vgrow="ALWAYS"
+                   style="-fx-background-color: transparent;
+                          -fx-border-color: transparent;">
+            <columns>
+                <TableColumn fx:id="colReturnId"  text="Return ID"   prefWidth="110"/>
+                <TableColumn fx:id="colOrderId"   text="Order ID"    prefWidth="110"/>
+                <TableColumn fx:id="colCustomer"  text="Customer"    prefWidth="160"/>
+                <TableColumn fx:id="colItems"     text="Items"       prefWidth="200"/>
+                <TableColumn fx:id="colDate"      text="Return Date" prefWidth="130"/>
+                <TableColumn fx:id="colStatus"    text="Status"      prefWidth="110"/>
+                <TableColumn fx:id="colActions"   text="Actions"     prefWidth="200"/>
+            </columns>
+            <placeholder>
+                <Label text="No return requests found"
+                       style="-fx-font-size: 14; -fx-text-fill: #94a3b8;"/>
+            </placeholder>
+        </TableView>
+    </VBox>
+</VBox>

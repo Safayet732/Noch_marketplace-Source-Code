@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.noch.noch.controllers.PortalSelectionController"
+           style="-fx-background-color: #f5f5f5;">
+
+    <VBox alignment="CENTER" spacing="0">
+
+        <!-- NOCH LOGO HEADER -->
+        <VBox alignment="CENTER" spacing="6">
+            <padding><Insets bottom="48"/></padding>
+
+            <Label text="NOCH"
+                   style="-fx-font-size: 52;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #000000;
+                          -fx-font-family: Georgia;
+                          -fx-letter-spacing: 8;"/>
+
+            <Label text="MINIMALIST ESSENTIALS"
+                   style="-fx-font-size: 11;
+                          -fx-text-fill: #666666;
+                          -fx-font-family: Arial;
+                          -fx-letter-spacing: 4;"/>
+        </VBox>
+
+        <!-- TWO PORTAL CARDS -->
+        <HBox spacing="32" alignment="CENTER">
+
+            <!-- CUSTOMER CARD -->
+            <VBox fx:id="customerCard"
+                  alignment="TOP_CENTER"
+                  prefWidth="300"
+                  style="-fx-background-color: white;
+                         -fx-border-color: #000000;
+                         -fx-border-width: 1;
+                         -fx-cursor: hand;"
+                  onMouseEntered="#onCustomerHover"
+                  onMouseExited="#onCustomerExit"
+                  onMouseClicked="#goToCustomerLogin">
+
+                <VBox alignment="CENTER" spacing="12">
+                    <padding><Insets top="40" bottom="24" left="32" right="32"/></padding>
+
+                    <Label text="N"
+                           style="-fx-font-size: 48;
+                                  -fx-font-weight: bold;
+                                  -fx-text-fill: #cccccc;
+                                  -fx-font-family: Georgia;"/>
+
+                    <Label text="CUSTOMER LOGIN"
+                           style="-fx-font-size: 14;
+                                  -fx-font-weight: bold;
+                                  -fx-text-fill: #000000;
+                                  -fx-font-family: Arial;
+                                  -fx-letter-spacing: 3;"/>
+
+                    <Label text="Browse products, place orders&#10;and track your purchases"
+                           wrapText="true"
+                           textAlignment="CENTER"
+                           maxWidth="220"
+                           style="-fx-font-size: 12;
+                                  -fx-text-fill: #888888;
+                                  -fx-font-family: Arial;"/>
+                </VBox>
+
+                <VBox alignment="CENTER">
+                    <padding><Insets top="16" bottom="40" left="32" right="32"/></padding>
+                    <Button text="ENTER AS CUSTOMER"
+                            onAction="#goToCustomerLogin"
+                            maxWidth="Infinity"
+                            style="-fx-background-color: #000000;
+                                   -fx-text-fill: white;
+                                   -fx-font-size: 12;
+                                   -fx-font-family: Arial;
+                                   -fx-letter-spacing: 2;
+                                   -fx-background-radius: 0;
+                                   -fx-padding: 14 0;
+                                   -fx-cursor: hand;"/>
+                </VBox>
+            </VBox>
+
+            <!-- ADMIN CARD -->
+            <VBox fx:id="adminCard"
+                  alignment="TOP_CENTER"
+                  prefWidth="300"
+                  style="-fx-background-color: white;
+                         -fx-border-color: #000000;
+                         -fx-border-width: 1;
+                         -fx-cursor: hand;"
+                  onMouseEntered="#onAdminHover"
+                  onMouseExited="#onAdminExit"
+                  onMouseClicked="#goToAdminLogin">
+
+                <VBox alignment="CENTER" spacing="12">
+                    <padding><Insets top="40" bottom="24" left="32" right="32"/></padding>
+
+                    <Label text="A"
+                           style="-fx-font-size: 48;
+                                  -fx-font-weight: bold;
+                                  -fx-text-fill: #cccccc;
+                                  -fx-font-family: Georgia;"/>
+
+                    <Label text="ADMIN LOGIN"
+                           style="-fx-font-size: 14;
+                                  -fx-font-weight: bold;
+                                  -fx-text-fill: #000000;
+                                  -fx-font-family: Arial;
+                                  -fx-letter-spacing: 3;"/>
+
+                    <Label text="Manage orders, customers&#10;and inventory"
+                           wrapText="true"
+                           textAlignment="CENTER"
+                           maxWidth="220"
+                           style="-fx-font-size: 12;
+                                  -fx-text-fill: #888888;
+                                  -fx-font-family: Arial;"/>
+                </VBox>
+
+                <VBox alignment="CENTER">
+                    <padding><Insets top="16" bottom="40" left="32" right="32"/></padding>
+                    <Button text="ENTER AS ADMIN"
+                            onAction="#goToAdminLogin"
+                            maxWidth="Infinity"
+                            style="-fx-background-color: #000000;
+                                   -fx-text-fill: white;
+                                   -fx-font-size: 12;
+                                   -fx-font-family: Arial;
+                                   -fx-letter-spacing: 2;
+                                   -fx-background-radius: 0;
+                                   -fx-padding: 14 0;
+                                   -fx-cursor: hand;"/>
+                </VBox>
+            </VBox>
+        </HBox>
+    </VBox>
+</StackPane>

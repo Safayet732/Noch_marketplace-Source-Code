@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.noch.noch.controllers.CustomerLoginController"
+           styleClass="login-root"
+           stylesheets="@../styles/main.css"
+           minWidth="600" minHeight="700">
+
+    <VBox alignment="CENTER"
+          maxWidth="420" minWidth="420"
+          spacing="0"
+          StackPane.alignment="CENTER">
+
+        <padding><Insets top="60" right="48" bottom="60" left="48"/></padding>
+
+        <!-- Logo -->
+        <VBox alignment="CENTER" spacing="10">
+            <VBox.margin><Insets bottom="40"/></VBox.margin>
+            <Label text="N O C H"
+                   styleClass="brand-title"
+                   maxWidth="Infinity"
+                   alignment="CENTER"
+                   textAlignment="CENTER"/>
+            <Label text="CUSTOMER ACCESS"
+                   styleClass="brand-subtitle"
+                   maxWidth="Infinity"
+                   alignment="CENTER"
+                   textAlignment="CENTER"/>
+        </VBox>
+
+        <!-- Email -->
+        <VBox spacing="8" maxWidth="Infinity">
+            <VBox.margin><Insets top="8" bottom="16"/></VBox.margin>
+            <Label text="Email Address" styleClass="field-label"/>
+            <TextField fx:id="emailField"
+                       promptText="customer@email.com"
+                       styleClass="input-field"
+                       maxWidth="Infinity"/>
+            <Label fx:id="emailError" text=""
+                   styleClass="error-label"
+                   visible="false" managed="false"/>
+        </VBox>
+
+        <!-- Password -->
+        <VBox spacing="8" maxWidth="Infinity">
+            <VBox.margin><Insets bottom="24"/></VBox.margin>
+            <Label text="Password" styleClass="field-label"/>
+            <PasswordField fx:id="passwordField"
+                           promptText="Enter your password"
+                           styleClass="input-field"
+                           maxWidth="Infinity"/>
+            <Label fx:id="passwordError" text=""
+                   styleClass="error-label"
+                   visible="false" managed="false"/>
+        </VBox>
+
+        <!-- Login button -->
+        <Button text="LOGIN AS CUSTOMER"
+                styleClass="login-btn"
+                onAction="#handleLogin"
+                maxWidth="Infinity"
+                prefHeight="52">
+            <VBox.margin><Insets bottom="24"/></VBox.margin>
+        </Button>
+
+        <!-- Footer -->
+        <Label text="Login is required to access the store."
+               styleClass="login-footer"
+               maxWidth="Infinity"
+               alignment="CENTER"/>
+
+        <!-- Back link -->
+        <Button text="← Back to Portal Selection"
+                onAction="#goBack"
+                style="-fx-background-color:transparent;-fx-text-fill:#888888;
+                       -fx-font-size:12;-fx-cursor:hand;-fx-underline:true;
+                       -fx-border-width:0;-fx-font-family:Arial;">
+            <VBox.margin><Insets top="16"/></VBox.margin>
+        </Button>
+    </VBox>
+</StackPane>

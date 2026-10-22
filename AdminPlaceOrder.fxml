@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.noch.noch.controllers.AdminPlaceOrderController"
+      spacing="0"
+      style="-fx-background-color: #f8fafc;">
+
+    <!-- PAGE HEADER -->
+    <VBox spacing="4">
+        <padding><Insets bottom="24"/></padding>
+        <Label text="Place New Order (Admin)"
+               style="-fx-font-size: 28; -fx-font-weight: bold;
+                      -fx-text-fill: #0f172a; -fx-font-family: Arial;"/>
+        <Label text="Create an order on behalf of a customer"
+               style="-fx-font-size: 13; -fx-text-fill: #64748b; -fx-font-family: Arial;"/>
+    </VBox>
+
+    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+        <VBox spacing="16">
+
+            <!-- CUSTOMER SELECTION CARD -->
+            <VBox style="-fx-background-color: white;
+                         -fx-background-radius: 12;
+                         -fx-border-color: #e2e8f0;
+                         -fx-border-width: 1;
+                         -fx-border-radius: 12;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0, 0, 2);">
+
+                <VBox spacing="4" style="-fx-padding: 20 24 12 24;
+                                          -fx-border-color: #f1f5f9;
+                                          -fx-border-width: 0 0 1 0;">
+                    <Label text="Customer Selection"
+                           style="-fx-font-size: 16; -fx-font-weight: bold;
+                                  -fx-text-fill: #0f172a; -fx-font-family: Arial;"/>
+                    <Label text="Select the customer for this order"
+                           style="-fx-font-size: 12; -fx-text-fill: #64748b; -fx-font-family: Arial;"/>
+                </VBox>
+
+                <VBox spacing="8" style="-fx-padding: 16 24 24 24;" maxWidth="360">
+                    <Label text="Customer *"
+                           style="-fx-font-size: 13; -fx-font-weight: bold;
+                                  -fx-text-fill: #374151; -fx-font-family: Arial;"/>
+                    <ComboBox fx:id="customerCombo"
+                              promptText="Select customer"
+                              maxWidth="Infinity"
+                              style="-fx-background-radius: 8;
+                                     -fx-border-color: #d1d5db;
+                                     -fx-border-radius: 8;
+                                     -fx-font-size: 13; -fx-font-family: Arial;"/>
+                    <Label fx:id="customerError" text=""
+                           style="-fx-text-fill: #dc2626; -fx-font-size: 12; -fx-font-family: Arial;"/>
+                </VBox>
+            </VBox>
+
+            <!-- ORDER ITEMS CARD -->
+            <VBox style="-fx-background-color: white;
+                         -fx-background-radius: 12;
+                         -fx-border-color: #e2e8f0;
+                         -fx-border-width: 1;
+                         -fx-border-radius: 12;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0, 0, 2);">
+
+                <HBox alignment="CENTER_LEFT"
+                      style="-fx-padding: 20 24 12 24;
+                             -fx-border-color: #f1f5f9;
+                             -fx-border-width: 0 0 1 0;">
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="Order Items"
+                               style="-fx-font-size: 16; -fx-font-weight: bold;
+                                      -fx-text-fill: #0f172a; -fx-font-family: Arial;"/>
+                        <Label text="Add products to the order"
+                               style="-fx-font-size: 12; -fx-text-fill: #64748b; -fx-font-family: Arial;"/>
+                    </VBox>
+                    <Button text="+ Add Product"
+                            onAction="#addLineItem"
+                            style="-fx-background-color: #f1f5f9;
+                                   -fx-text-fill: #374151;
+                                   -fx-border-color: #d1d5db;
+                                   -fx-border-width: 1;
+                                   -fx-border-radius: 8;
+                                   -fx-background-radius: 8;
+                                   -fx-padding: 8 16; -fx-cursor: hand;
+                                   -fx-font-size: 13; -fx-font-family: Arial;"/>
+                </HBox>
+
+                <VBox fx:id="lineItemsContainer" spacing="12"
+                      style="-fx-padding: 16 24;">
+
+                    <!-- Column Headers -->
+                    <HBox style="-fx-padding: 0 0 8 0;
+                                 -fx-border-color: #f1f5f9;
+                                 -fx-border-width: 0 0 1 0;">
+                        <Label text="Product" prefWidth="280"
+                               style="-fx-font-size: 12; -fx-font-weight: bold;
+                                      -fx-text-fill: #64748b; -fx-font-family: Arial;"/>
+                        <Label text="Unit Price" prefWidth="100"
+                               style="-fx-font-size: 12; -fx-font-weight: bold;
+                                      -fx-text-fill: #64748b; -fx-font-family: Arial;
+                                      -fx-alignment: CENTER_RIGHT;"/>
+                        <Label text="Quantity" prefWidth="100"
+                               style="-fx-font-size: 12; -fx-font-weight: bold;
+                                      -fx-text-fill: #64748b; -fx-font-family: Arial;
+                                      -fx-alignment: CENTER;"/>
+                        <Label text="Subtotal" prefWidth="100"
+                               style="-fx-font-size: 12; -fx-font-weight: bold;
+                                      -fx-text-fill: #64748b; -fx-font-family: Arial;
+                                      -fx-alignment: CENTER_RIGHT;"/>
+                    </HBox>
+
+                    <!-- Empty state label -->
+                    <Label fx:id="emptyLabel"
+                           text="No products added yet. Click '+ Add Product' to begin."
+                           style="-fx-font-size: 13; -fx-text-fill: #94a3b8;
+                                  -fx-font-family: Arial; -fx-padding: 24 0;"/>
+                </VBox>
+
+                <!-- Total Row -->
+                <HBox alignment="CENTER_RIGHT"
+                      style="-fx-padding: 16 24;
+                             -fx-border-color: #f1f5f9;
+                             -fx-border-width: 1 0 0 0;" spacing="16">
+                    <Label text="Order Total:"
+                           style="-fx-font-size: 16; -fx-font-weight: bold;
+                                  -fx-text-fill: #374151; -fx-font-family: Arial;"/>
+                    <Label fx:id="totalLabel" text="£0.00"
+                           style="-fx-font-size: 22; -fx-font-weight: bold;
+                                  -fx-text-fill: #002A53; -fx-font-family: Arial;"/>
+                </HBox>
+            </VBox>
+
+            <!-- STOCK ERROR LABEL -->
+            <Label fx:id="stockErrorLabel" text="" wrapText="true"
+                   style="-fx-text-fill: #dc2626; -fx-font-size: 13;
+                          -fx-background-color: #fee2e2;
+                          -fx-background-radius: 8; -fx-padding: 12;
+                          -fx-font-family: Arial;"/>
+
+            <!-- ACTION BUTTONS -->
+            <HBox spacing="12" alignment="CENTER_RIGHT">
+                <padding><Insets bottom="24"/></padding>
+                <Button text="Cancel"
+                        onAction="#handleCancel"
+                        style="-fx-background-color: white;
+                               -fx-text-fill: #374151;
+                               -fx-border-color: #d1d5db;
+                               -fx-border-width: 1;
+                               -fx-border-radius: 8;
+                               -fx-background-radius: 8;
+                               -fx-padding: 10 24; -fx-cursor: hand;
+                               -fx-font-size: 14; -fx-font-family: Arial;"/>
+                <Button text="🛒  Place Order"
+                        onAction="#handleSubmit"
+                        style="-fx-background-color: #002A53;
+                               -fx-text-fill: white;
+                               -fx-background-radius: 8;
+                               -fx-padding: 10 24; -fx-cursor: hand;
+                               -fx-font-size: 14; -fx-font-weight: bold;
+                               -fx-font-family: Arial;"/>
+            </HBox>
+
+        </VBox>
+    </ScrollPane>
+</VBox>

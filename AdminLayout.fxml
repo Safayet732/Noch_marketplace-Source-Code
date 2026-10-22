@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.noch.noch.controllers.AdminLayoutController"
+      style="-fx-background-color: #f5f5f5;"
+      prefWidth="1280" prefHeight="800">
+
+    <!-- TOP NAVBAR -->
+    <HBox alignment="CENTER_LEFT"
+          style="-fx-background-color: white;
+                 -fx-border-color: #e0e0e0;
+                 -fx-border-width: 0 0 1 0;
+                 -fx-padding: 0 40;">
+
+        <!-- NOCH Logo -->
+        <VBox alignment="CENTER_LEFT" spacing="0">
+            <padding><Insets top="16" bottom="16"/></padding>
+            <Label text="NOCH"
+                   style="-fx-font-size: 24; -fx-font-weight: bold;
+                          -fx-text-fill: #000000; -fx-font-family: Georgia;"/>
+        </VBox>
+
+        <!-- Nav Links -->
+        <HBox spacing="0" alignment="CENTER" HBox.hgrow="ALWAYS"
+              style="-fx-padding: 0 40;">
+
+            <Button fx:id="dashboardBtn"
+                    text="ORDERS"
+                    onAction="#goToDashboard"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #000000;
+                           -fx-font-size: 11; -fx-font-weight: bold;
+                           -fx-font-family: Arial; -fx-letter-spacing: 2;
+                           -fx-padding: 20 20;
+                           -fx-border-color: transparent transparent #000000 transparent;
+                           -fx-border-width: 0 0 2 0;
+                           -fx-cursor: hand;"/>
+
+            <Button fx:id="placeOrderBtn"
+                    text="PLACE ORDER"
+                    onAction="#goToPlaceOrder"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #888888;
+                           -fx-font-size: 11;
+                           -fx-font-family: Arial; -fx-letter-spacing: 2;
+                           -fx-padding: 20 20;
+                           -fx-border-color: transparent;
+                           -fx-cursor: hand;"/>
+
+            <Button fx:id="customerLookupBtn"
+                    text="CUSTOMERS"
+                    onAction="#goToCustomerLookup"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #888888;
+                           -fx-font-size: 11;
+                           -fx-font-family: Arial; -fx-letter-spacing: 2;
+                           -fx-padding: 20 20;
+                           -fx-border-color: transparent;
+                           -fx-cursor: hand;"/>
+
+            <Button fx:id="returnsBtn"
+                    text="RETURNS"
+                    onAction="#goToReturns"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #888888;
+                           -fx-font-size: 11;
+                           -fx-font-family: Arial; -fx-letter-spacing: 2;
+                           -fx-padding: 20 20;
+                           -fx-border-color: transparent;
+                           -fx-cursor: hand;"/>
+        </HBox>
+
+        <!-- Right side — admin info + logout -->
+        <HBox spacing="16" alignment="CENTER_RIGHT">
+            <Label text="ADMIN"
+                   style="-fx-font-size: 11; -fx-font-weight: bold;
+                          -fx-text-fill: #000000; -fx-font-family: Arial;
+                          -fx-letter-spacing: 2;"/>
+            <Button text="LOGOUT"
+                    onAction="#handleLogout"
+                    style="-fx-background-color: #000000;
+                           -fx-text-fill: white;
+                           -fx-font-size: 11; -fx-font-family: Arial;
+                           -fx-letter-spacing: 2;
+                           -fx-background-radius: 0;
+                           -fx-padding: 8 16; -fx-cursor: hand;"/>
+        </HBox>
+    </HBox>
+
+    <!-- MAIN CONTENT -->
+    <StackPane fx:id="contentArea" VBox.vgrow="ALWAYS"
+               style="-fx-background-color: #f5f5f5; -fx-padding: 32;">
+        <Label text="Loading..."
+               style="-fx-font-size: 14; -fx-text-fill: #888888;"/>
+    </StackPane>
+
+</VBox>
